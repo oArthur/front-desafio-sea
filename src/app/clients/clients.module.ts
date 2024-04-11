@@ -15,14 +15,14 @@ import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatOption, MatSelect} from "@angular/material/select";
 import { ClientsListComponent } from './components/clients-list/clients-list.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 
 @NgModule({
   declarations: [
     ClientsComponent,
     ClientFormComponent,
-    ClientsListComponent
-  ],
+    ClientsListComponent],
   imports: [
     CommonModule,
     ClientsRoutingModule,
