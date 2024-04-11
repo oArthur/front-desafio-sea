@@ -2,23 +2,26 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ClientsRoutingModule } from './clients-routing.module';
-import { ClientsComponent } from './clients/clients.component';
+import { ClientsComponent } from './containers/clients/clients.component';
 import {MatTableModule} from '@angular/material/table'
 import {MatCardModule} from "@angular/material/card";
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {MatIcon} from "@angular/material/icon";
 import {MatButton, MatIconButton, MatMiniFabButton} from "@angular/material/button";
-import { ClientFormComponent } from './client-form/client-form.component';
+import { ClientFormComponent } from './containers/client-form/client-form.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
+import {MatOption, MatSelect} from "@angular/material/select";
+import { ClientsListComponent } from './components/clients-list/clients-list.component';
 
 
 @NgModule({
   declarations: [
     ClientsComponent,
-    ClientFormComponent
+    ClientFormComponent,
+    ClientsListComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +37,9 @@ import {MatInput} from "@angular/material/input";
     MatFormField,
     MatInput,
     MatFormFieldModule,
-    MatButton
+    MatButton,
+    MatSelect,
+    MatOption
   ]
 })
 export class ClientsModule { }

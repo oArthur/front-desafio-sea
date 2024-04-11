@@ -3,6 +3,10 @@ export interface Client {
   nome: string,
   cpf: string,
   endereco:string,
+  cep:string,
   email:string,
-  telefone: number
+  telefone: string
+  tipo:string
+
+
 }
