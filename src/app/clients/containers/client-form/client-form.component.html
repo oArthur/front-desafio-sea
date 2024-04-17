@@ -1,34 +1,63 @@
 <mat-card>
   <form [formGroup]="form" class="w-full flex flex-col">
     <mat-form-field>
-      <input matInput placeholder="Nome" formControlName="nome">
+      <input matInput placeholder="Nome" formControlName="nome" required>
+      <mat-error *ngIf="form.get('nome')?.invalid">{{getMessageErro('nome')}}</mat-error>
     </mat-form-field>
 
     <mat-form-field >
-      <input matInput placeholder="CPF" formControlName="cpf">
-    </mat-form-field>
-    <mat-form-field >
-      <input matInput placeholder="Email" formControlName="email">
-    </mat-form-field>
+      <input matInput placeholder="CPF" formControlName="cpf" required>
+      <mat-error *ngIf="form.get('cpf')?.invalid">{{getMessageErro('cpf')}}</mat-error>    </mat-form-field>
 
-    <mat-form-field >
-      <input matInput placeholder="Telefone" formControlName="telefone">
-    </mat-form-field>
+    <div class="w-full">
+      <span class="text-xl">Telefones:</span>
+      <button mat-icon-button (click)="addNewPhone()"><mat-icon>add</mat-icon></button>
+      <table  formArrayName="telefones" *ngFor="let telefone of getTelefonesFormArray(); let i = index">
+        <tr [formGroupName]="i">
+          <td style="width: 65%">
+            <mat-form-field class="w-full">
+            <input matInput placeholder="Telefone" formControlName="numero">
+              <mat-error *ngIf="form.get('numero')?.invalid">{{getMessageErro('numero')}}</mat-error>
+          </mat-form-field></td>
+          <td style="width: 30%">
+            <mat-form-field class="w-full">
+              <mat-label>Tipo de Telefone</mat-label>
+              <mat-select formControlName="tipo">
+                <mat-option value="Residencial">Residencial</mat-option>
+                <mat-option value="Comercial">Comercial</mat-option>
+                <mat-option value="Celular">Celular</mat-option>
+              </mat-select>
+              <mat-error *ngIf="form.get('tipo')?.invalid">{{getMessageErro('tipo')}}</mat-error>
+            </mat-form-field>
+          </td>
+          <td><button mat-icon-button color="warn" (click)="removePhone(i)"><mat-icon>delete</mat-icon></button></td>
+        </tr>
+      </table>
 
-    <mat-form-field>
-      <mat-label>Tipo de Telefone</mat-label>
-      <mat-select formControlName="tipo">
-        <mat-option value="Residencial">Residencial</mat-option>
-        <mat-option value="Comercial">Comercial</mat-option>
-        <mat-option value="Ceular">Celular</mat-option>
-      </mat-select>
-    </mat-form-field>
+    </div>
+    <div class="w-full">
+      <span class="text-xl ">Emails:</span>
+      <button mat-icon-button (click)="addNewMail()"><mat-icon>add</mat-icon></button>
+      <table  formArrayName="emails" *ngFor="let email of getEmailFormArray(); let i = index">
+        <tr [formGroupName]="i">
+          <td style="width: 100%">
+            <mat-form-field class="w-full">
+            <input matInput placeholder="Email" formControlName="email">
+              <mat-error *ngIf="form.get('email')?.invalid">{{getMessageErro('email')}}</mat-error>
+          </mat-form-field></td>
+          <td><button mat-icon-button color="warn" (click)="removeMail(i)"><mat-icon>delete</mat-icon></button></td>
+        </tr>
+      </table>
+
+    </div>
 
     <mat-form-field >
       <input matInput placeholder="Endereço" formControlName="endereco">
+      <mat-error *ngIf="form.get('endereco')?.invalid">{{getMessageErro('endereco')}}</mat-error>
     </mat-form-field>
     <mat-form-field >
       <input matInput placeholder="Cep" formControlName="cep">
+      <mat-error *ngIf="form.get('cep')?.invalid">{{getMessageErro('cep')}}</mat-error>
     </mat-form-field>
   </form>
   <mat-card-actions>

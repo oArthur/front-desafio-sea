@@ -12,5 +12,5 @@ export const clientsResolver: ResolveFn<Observable<Client>> =
       return service.loadById(route.params['id']);
     }
 
-  return of({id: 0, nome: '', cpf: '', endereco: '', cep: '', email: '', telefone: '', tipo: ''});
+  return of({id: 0, nome: '', cpf: '', endereco: '', cep: '', telefones:[], emails:[]});
 };
